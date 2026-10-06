@@ -10,6 +10,17 @@
 </head>
 <body>
 
+  <!-- Top Announcement Bar -->
+  <aside class="top-ticker" aria-label="Special Offers" style="background: #FFF8E7; border-bottom: 1px solid #EFE4D0; padding: 8px 0;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; font-size: 0.86rem; color: var(--text-main); font-weight: 600; gap: 16px; flex-wrap: wrap;">
+      <span>Complimentary Butter Popcorn on orders above ₹199</span>
+      <span style="color: #D4A373;">•</span>
+      <span>100% Pure Vegetarian</span>
+      <span style="color: #D4A373;">•</span>
+      <span>Pocket-Friendly ₹5 and ₹10 Fresh Packs</span>
+    </div>
+  </aside>
+
   <!-- Navigation Header -->
   <header class="site-header">
     <div class="container nav-container">
@@ -49,15 +60,15 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-eyebrow">
-            <span>Traditional Flavours, Modern Crunch</span>
+            <span>TRADITIONAL FLAVOURS, CONTEMPORARY CRUNCH</span>
           </div>
 
           <h1 class="hero-title">
-            Barson Ki Shaan, <span class="highlight-red">Har Pal Ka Swaad.</span>
+            Authentic Taste in Every Bite
           </h1>
 
           <p class="hero-subtitle">
-            Authentic Indian namkeen and savoury snacks made from pure pulses, premium groundnuts, and royal spices. 100% Pure Vegetarian with touch-free sealed nitrogen freshness.
+            Crafted with pure vegetarian ingredients, choice farm-fresh pulses, and royal Indian spices. Export quality sealed for lasting freshness.
           </p>
 
           <div class="hero-cta-group">
@@ -65,7 +76,7 @@
               <span>Explore Our Range</span>
             </a>
             <a href="contact.html" class="btn btn-secondary">
-              <span>Distributor Inquiries</span>
+              <span>Dealership Inquiries</span>
             </a>
           </div>
 
@@ -75,12 +86,16 @@
               <span>100% Pure Veg</span>
             </div>
             <div class="trust-item">
-              <div class="trust-item-icon">✓</div>
-              <span>FSSAI Certified</span>
+              <span class="weight-chip" style="background:#FFF; border:1px solid #EAE1D5; color:var(--text-main);">FSSAI</span>
+              <span>Certified Facility</span>
             </div>
             <div class="trust-item">
-              <div class="trust-item-icon">⚡</div>
-              <span>Nitrogen Sealed</span>
+              <span class="weight-chip" style="background:#FFF; border:1px solid #EAE1D5; color:var(--text-main);">Nitrogen</span>
+              <span>Sealed Freshness</span>
+            </div>
+            <div class="trust-item">
+              <span class="weight-chip" style="background:#FFF; border:1px solid #EAE1D5; color:var(--text-main);">Export</span>
+              <span>Quality Standards</span>
             </div>
           </div>
         </div>
@@ -90,24 +105,23 @@
           <div class="stage-glow-circle"></div>
 
           <!-- Left Pack: Popcorn -->
-          <img src="assets/pop-corn.png" alt="Nimco Butter Popcorn" class="hero-pack-side pack-left" onclick="window.snackBoxCart && window.snackBoxCart.open()">
+          <img src="assets/pop-corn.png" alt="Nimco Butter Popcorn" class="hero-pack-side pack-left" onclick="window.snackBoxCart && window.snackBoxCart.open()" title="Click to open Snack Box">
 
           <!-- Main Center Pack: Royal Aloo Bhujia -->
-          <img src="assets/aloo-bhujia.png" alt="Nimco Royal Aloo Bhujia" class="hero-pack-main" onclick="openProductModal('aloo-bhujia')">
+          <img src="assets/aloo-bhujia.png" alt="Nimco Royal Aloo Bhujia" class="hero-pack-main" onclick="openProductModal('aloo-bhujia')" title="Click for details & nutrition">
 
           <!-- Right Pack: Khatta Meetha -->
-          <img src="assets/khatta_meetha.jpeg" alt="Nimco Khatta Meetha Mixture" class="hero-pack-side pack-right" onclick="openProductModal('khatta-meetha')">
+          <img src="assets/khatta_meetha.jpeg" alt="Nimco Khatta Meetha Mixture" class="hero-pack-side pack-right" onclick="openProductModal('khatta-meetha')" title="Click for details & nutrition">
         </div>
       </div>
     </section>
 
-    <!-- All Things Craveable: 3D Horizontal Slider (Bikano-Inspired) -->
+    <!-- All Things Craveable: Horizontal Product Slider (Bikano-Inspired) -->
     <section class="craveable-section" id="craveableSection">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">All Things Craveable</div>
-          <h2 class="section-title">All Things Crunchy & Craveable</h2>
-          <p class="section-desc">Explore our signature namkeens and savoury specialties crafted for every mood and gathering.</p>
+          <h2 class="section-title">All Things Craveable</h2>
+          <p class="section-desc">Handcrafted namkeens and savoury treats ready for family gatherings, tea breaks, and festive sharing.</p>
         </div>
 
         <!-- Category Toolbar -->
@@ -163,9 +177,8 @@
     <section class="certified-section">
       <div class="container">
         <div class="section-header" style="margin-bottom: 35px;">
-          <div class="section-tag">Quality Promise</div>
           <h2 class="section-title">Standards You Can Rely On</h2>
-          <p class="section-desc">Every batch is produced under strict quality and safety certifications.</p>
+          <p class="section-desc">Every batch is produced under strict quality and food safety certifications.</p>
         </div>
 
         <div class="certified-grid">
@@ -175,31 +188,31 @@
             </div>
             <div>
               <h4>100% Pure Vegetarian</h4>
-              <p>Strictly vegetarian ingredients and dedicated zero-meat facilities.</p>
+              <p>Strictly vegetarian ingredients and dedicated processing facilities.</p>
             </div>
           </div>
 
           <div class="certified-card">
-            <div class="certified-card-icon">🛡️</div>
+            <div class="certified-card-icon" style="font-weight: 800; font-size: 0.9rem; color: var(--brand-red);">FSSAI</div>
             <div>
               <h4>FSSAI Compliant</h4>
-              <p>Certified food safety standards with regular laboratory testing.</p>
+              <p>Certified food safety management with regular batch laboratory audits.</p>
             </div>
           </div>
 
           <div class="certified-card">
-            <div class="certified-card-icon">💨</div>
+            <div class="certified-card-icon" style="font-weight: 800; font-size: 0.9rem; color: var(--brand-red);">N2</div>
             <div>
               <h4>Nitrogen Sealed</h4>
-              <p>Multi-layer barrier packaging locks out moisture and preserves crunch.</p>
+              <p>Multi-layer barrier packaging locks out moisture and maintains crispness.</p>
             </div>
           </div>
 
           <div class="certified-card">
-            <div class="certified-card-icon">⭐</div>
+            <div class="certified-card-icon" style="font-weight: 800; font-size: 0.9rem; color: var(--brand-red);">GRADE-A</div>
             <div>
               <h4>Export Quality Pulses</h4>
-              <p>Choice whole lentils, golden American corn, and fine groundnuts.</p>
+              <p>Choice whole lentils, golden American corn, and fine roasted groundnuts.</p>
             </div>
           </div>
         </div>
@@ -224,7 +237,6 @@
     <section class="benefits-section">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Pure Taste & Trust</div>
           <h2 class="section-title">Why Families Choose Nimco's</h2>
           <p class="section-desc">A legacy of authentic recipes, wholesome pulses, and uncompromising cleanliness in every packet.</p>
         </div>
@@ -238,14 +250,14 @@
             <div>
               <h3 class="bento-title">100% Pure Vegetarian & Farm-Fresh Ingredients</h3>
               <p class="bento-text">
-                Every single Nimco recipe is made with whole lentils, golden corn, and sun-dried whole spices. We use clean vegetable oils with zero animal fats or artificial shortcuts.
+                Every single Nimco recipe is made with whole lentils, golden corn, and sun-dried spices. We use clean vegetable oils with zero animal fats or artificial shortcuts.
               </p>
             </div>
           </div>
 
           <!-- Bento Card 2 -->
           <div class="bento-card">
-            <div class="bento-icon-bubble">🪙</div>
+            <div class="bento-icon-bubble" style="font-weight: 800; color: var(--brand-red);">₹5</div>
             <h3 class="bento-title">Pocket-Friendly Treat Packs</h3>
             <p class="bento-text">
               Quality namkeen should be accessible to all. Our signature ₹5 and ₹10 packets offer single-serving convenience for tea breaks and travel.
@@ -254,7 +266,7 @@
 
           <!-- Bento Card 3 -->
           <div class="bento-card">
-            <div class="bento-icon-bubble">✨</div>
+            <div class="bento-icon-bubble" style="font-weight: 800; color: var(--brand-red);">AUTO</div>
             <h3 class="bento-title">Touch-Free Automated Packaging</h3>
             <p class="bento-text">
               Processed and sealed in an automated facility using food-grade nitrogen barriers to keep snacks crisp for months without heavy preservatives.
@@ -263,7 +275,7 @@
 
           <!-- Bento Card 4 -->
           <div class="bento-card">
-            <div class="bento-icon-bubble">🌾</div>
+            <div class="bento-icon-bubble" style="font-weight: 800; color: var(--brand-red);">PROTEIN</div>
             <h3 class="bento-title">Wholesome Protein & Fiber</h3>
             <p class="bento-text">
               Naturally rich in protein and fiber from wholesome moong dal, roasted chana, and groundnuts to provide satisfying everyday energy.
@@ -272,8 +284,8 @@
 
           <!-- Bento Card 5 -->
           <div class="bento-card">
-            <div class="bento-icon-bubble">❤️</div>
-            <h3 class="bento-title">"Khate Khate Mann Na Bhare!"</h3>
+            <div class="bento-icon-bubble" style="font-weight: 800; color: var(--brand-red);">HERITAGE</div>
+            <h3 class="bento-title">Khate Khate Mann Na Bhare</h3>
             <p class="bento-text">
               Our guiding motto: once you open a pack, the balanced chatpata flavour keeps you reaching for one more bite until the last crumb.
             </p>
@@ -282,11 +294,30 @@
       </div>
     </section>
 
+    <!-- Featured Bestsellers Showcase (Clean FMCG Cards) -->
+    <section style="padding: 75px 0 50px; background: #FFFDF9; border-top: 1px solid #ECE4D8;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Snack Box Bestsellers</h2>
+          <p class="section-desc">Our most requested varieties, crafted with authentic regional spices and nitrogen-sealed freshness.</p>
+        </div>
+
+        <div class="products-grid" id="featuredProductsGrid">
+          <!-- Populated dynamically by main.js with clean FMCG cards -->
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="products.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 32px;">
+            Explore All 15 Snacks
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- Customer Reviews Section -->
     <section style="padding: 80px 0; background: #FAF7F2; border-top: 1px solid #ECE4D8;">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Customer Experiences</div>
           <h2 class="section-title">Loved by Families Across India</h2>
           <p class="section-desc">Authentic feedback from regular households, tea stalls, and retailers.</p>
         </div>
@@ -415,10 +446,10 @@
             <span class="brand-sub">Namkeen & Sweets</span>
           </div>
           <p>
-            Crafting India's crunchiest and most wholesome snacks since 1998. Bringing authentic tastes, joyous smiles, and pure vegetarian quality to households nationwide.
+            Crafting India's crispest and most wholesome snacks since 1998. Bringing authentic tastes, joyous smiles, and pure vegetarian quality to households nationwide.
           </p>
           <div class="footer-tagline-quote">
-            "Khate Khate Mann Na Bhare!"
+            "Khate Khate Mann Na Bhare"
           </div>
         </div>
 

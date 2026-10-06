@@ -1,6 +1,9 @@
 /* ==========================================================================
-   NIMCO'S MAIN UI INTERACTIVITY
-   Header scroll, mobile drawer, product detail modal, catalogue & search
+   NIMCO'S MAIN UI INTERACTIVITY (PROFESSIONAL FMCG EDITION)
+   - Header scroll effects & responsive mobile navigation drawer
+   - High-end FMCG product card rendering (clean elevation & zero gimmicks)
+   - Comprehensive nutritional specifications modal
+   - Live category filtration & real-time search
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +35,6 @@ function initHeader() {
       navMenu.classList.toggle('mobile-open');
     });
 
-    // Close menu when clicking outside or navigating
     document.addEventListener('click', (e) => {
       if (!toggleBtn.contains(e.target) && !navMenu.contains(e.target)) {
         navMenu.classList.remove('mobile-open');
@@ -73,7 +75,6 @@ function initProductDetailModal() {
     modalBackdrop.classList.remove('open');
   }
 
-  // Global listener for Quick View buttons
   document.addEventListener('click', (e) => {
     const viewBtn = e.target.closest('.btn-quick-view');
     if (viewBtn) {
@@ -91,61 +92,85 @@ function openProductModal(productId) {
   if (!product || !modalBackdrop || !modalBody) return;
 
   modalBody.innerHTML = `
-    <div style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 32px; align-items: start;">
-      <div style="background: ${product.accentColor || '#FAF7F2'}; border-radius: 16px; padding: 28px 20px; text-align: center; border: 1px solid var(--border-subtle);">
-        <img src="${product.image}" alt="${product.name}" style="max-height: 290px; margin: 0 auto; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.12));">
-        <div style="margin-top: 18px; display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.85rem; color: #1E7E34; background: #FFFFFF; padding: 6px 14px; border-radius: 999px; border: 1px solid #C3E6CB;">
+    <div class="product-modal-grid">
+      <div class="modal-pack-showcase" style="background: ${product.accentColor || '#FAF7F2'};">
+        <span class="modal-flavor-badge">
+          ${product.flavorHeroBadge || product.badge}
+        </span>
+        <img src="${product.image}" alt="${product.name}" class="modal-packet-img">
+        <div class="modal-veg-pill">
           <span class="veg-badge"></span> 100% Pure Vegetarian
         </div>
       </div>
 
-      <div>
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+      <div class="modal-details-col">
+        <div class="modal-header-meta">
           <span class="flavor-chip">${product.categoryLabel}</span>
-          <span style="font-weight: 800; color: var(--brand-red); font-size: 1.35rem;">₹${product.price} <small style="font-size: 0.88rem; color: var(--text-muted); font-weight: 500;">(${product.packWeight})</small></span>
+          <span class="modal-price">₹${product.price} <small>(${product.packWeight})</small></span>
         </div>
         
-        <h3 style="font-size: 1.65rem; margin-bottom: 6px; line-height: 1.25; color: var(--text-main);">${product.name}</h3>
-        <p style="color: #B85D00; font-weight: 600; font-size: 0.95rem; margin-bottom: 14px;">"${product.tagline}"</p>
-        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px;">${product.desc}</p>
+        <h3 class="modal-title">${product.name}</h3>
+        <p class="modal-tagline">"${product.tagline}"</p>
+        <p class="modal-desc">${product.desc}</p>
 
-        <!-- Culinary / Heritage Note -->
-        <div style="background: #FFFBF2; border-left: 3px solid var(--brand-gold); padding: 12px 16px; margin-bottom: 20px; border-radius: 0 8px 8px 0;">
-          <div style="font-size: 0.78rem; font-weight: 800; color: #8A6500; text-transform: uppercase; letter-spacing: 0.05em;">Craft &amp; Heritage Quality:</div>
-          <div style="font-size: 0.92rem; color: var(--text-main); margin-top: 3px; line-height: 1.45;">${product.culinaryNote || product.desc}</div>
+        <!-- Culinary & Ingredient Notes -->
+        <div class="modal-moment-callout">
+          <div>
+            <strong>Culinary Standards:</strong>
+            <p>${product.culinaryNote || product.desc}</p>
+          </div>
+        </div>
+
+        <!-- Flavor Profile Metrics -->
+        <div class="modal-flavor-breakdown">
+          <div class="flavor-meter-row">
+            <span>Crunch Index:</span>
+            <div class="meter-bar"><div class="meter-fill" style="width: ${product.flavorProfile.crunch * 20}%;"></div></div>
+            <strong>${product.flavorProfile.crunch}/5</strong>
+          </div>
+          <div class="flavor-meter-row">
+            <span>Spice Balance:</span>
+            <div class="meter-bar"><div class="meter-fill" style="width: ${product.flavorProfile.spice * 20}%;"></div></div>
+            <strong>${product.flavorProfile.spice}/5</strong>
+          </div>
+          <div class="flavor-meter-row">
+            <span>Tangy Note:</span>
+            <div class="meter-bar"><div class="meter-fill" style="width: ${product.flavorProfile.tangy * 20}%;"></div></div>
+            <strong>${product.flavorProfile.tangy}/5</strong>
+          </div>
         </div>
 
         <!-- Nutrition Facts Grid -->
-        <div style="background: #FAFAFA; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 14px; margin-bottom: 18px;">
-          <div style="font-weight: 700; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em;">Nutrition per serving (${product.packWeight}):</div>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center;">
-            <div style="background: #FFFFFF; padding: 8px 4px; border-radius: 6px; border: 1px solid var(--border-subtle);">
-              <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Energy</span>
-              <strong style="font-size: 0.92rem; color: var(--brand-red);">${product.nutrition.calories}</strong>
+        <div class="modal-nutrition-card">
+          <div class="nutrition-header">Nutritional Values per Pack (${product.packWeight}):</div>
+          <div class="nutrition-quad-grid">
+            <div class="nutrition-quad-cell">
+              <span>Energy</span>
+              <strong>${product.nutrition.calories}</strong>
             </div>
-            <div style="background: #FFFFFF; padding: 8px 4px; border-radius: 6px; border: 1px solid var(--border-subtle);">
-              <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Protein</span>
-              <strong style="font-size: 0.92rem; color: #1E7E34;">${product.nutrition.protein}</strong>
+            <div class="nutrition-quad-cell">
+              <span>Protein</span>
+              <strong style="color: #1E7E34;">${product.nutrition.protein}</strong>
             </div>
-            <div style="background: #FFFFFF; padding: 8px 4px; border-radius: 6px; border: 1px solid var(--border-subtle);">
-              <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Carbs</span>
-              <strong style="font-size: 0.92rem; color: #D97706;">${product.nutrition.carbs}</strong>
+            <div class="nutrition-quad-cell">
+              <span>Carbohydrates</span>
+              <strong style="color: #D97706;">${product.nutrition.carbs}</strong>
             </div>
-            <div style="background: #FFFFFF; padding: 8px 4px; border-radius: 6px; border: 1px solid var(--border-subtle);">
-              <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">Dietary Fiber</span>
-              <strong style="font-size: 0.92rem; color: #4F46E5;">${product.nutrition.fiber}</strong>
+            <div class="nutrition-quad-cell">
+              <span>Dietary Fiber</span>
+              <strong style="color: #4F46E5;">${product.nutrition.fiber}</strong>
             </div>
           </div>
         </div>
 
         <!-- Ingredients statement -->
-        <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 22px;">
-          <strong style="color: var(--text-main);">Ingredients:</strong> ${product.ingredients}
+        <div class="modal-ingredients-text">
+          <strong>Ingredients:</strong> ${product.ingredients}
         </div>
 
         <div>
-          <button class="btn btn-primary btn-add-snack" data-product-id="${product.id}" style="width: 100%;">
-            Add to Snack Box
+          <button class="btn btn-primary btn-add-snack" data-product-id="${product.id}" style="width: 100%; font-size: 1rem; padding: 13px 20px;">
+            Add to Snack Box (₹${product.price})
           </button>
         </div>
       </div>
@@ -156,30 +181,37 @@ function openProductModal(productId) {
 }
 
 /* --------------------------------------------------------------------------
-   PRODUCTS CATALOGUE (PRODUCTS.HTML & HOME PREVIEWS)
+   CLEAN FMCG PRODUCT CARD RENDERING
    -------------------------------------------------------------------------- */
 function renderProductCard(product) {
   return `
-    <div class="snack-card" style="--card-accent: ${product.accentColor || '#FFFFFF'};" data-category="${product.category}">
+    <div class="snack-card" data-category="${product.category}">
       <div class="card-top-row">
-        <span class="veg-badge" title="100% Pure Vegetarian"></span>
-        <span class="price-tag">₹${product.price} Only</span>
+        <span class="flavor-badge-pill">
+          ${product.flavorHeroBadge || product.badge}
+        </span>
+        <span class="price-tag">₹${product.price}</span>
       </div>
 
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openProductModal('${product.id}')" title="Click to view nutritional specifications">
         <img src="${product.image}" alt="${product.name}" loading="lazy">
       </div>
 
       <div class="product-info">
-        <span class="snack-tagline">${product.tagline}</span>
+        <div class="snack-meta-chips">
+          <span class="veg-badge" title="100% Pure Vegetarian"></span>
+          <span class="weight-chip">${product.packWeight}</span>
+          <span class="crunch-mini-pill">${product.crunchLevel}</span>
+        </div>
+
         <h4 class="snack-title">${product.name}</h4>
-        <p class="snack-desc">${product.desc}</p>
+        <p class="snack-funbite">${product.funBite || product.desc}</p>
         
         <div class="card-actions-row">
-          <button class="btn-add-snack" data-product-id="${product.id}">
-            + Add to Box
+          <button class="btn-add-snack" data-product-id="${product.id}" title="Add pack to your Snack Box">
+            Add to Box
           </button>
-          <button class="btn-quick-view" data-product-id="${product.id}" title="View details and nutrition">
+          <button class="btn-quick-view" data-product-id="${product.id}" title="View ingredients and nutrition facts">
             Details
           </button>
         </div>
@@ -188,13 +220,15 @@ function renderProductCard(product) {
   `;
 }
 
+/* --------------------------------------------------------------------------
+   PRODUCTS CATALOGUE (PRODUCTS.HTML & HOME PREVIEWS)
+   -------------------------------------------------------------------------- */
 function initProductsPage() {
   const container = document.getElementById('allProductsGrid');
   const homeFeaturedContainer = document.getElementById('featuredProductsGrid');
   const filterTabs = document.querySelectorAll('.product-filter-btn');
   const searchInput = document.getElementById('productSearchInput');
 
-  // Render on All Products grid (products.html)
   if (container && window.NIMCO_PRODUCTS) {
     function filterAndRender() {
       const activeFilter = document.querySelector('.product-filter-btn.active')?.dataset.filter || 'all';
@@ -214,6 +248,7 @@ function initProductsPage() {
           p.name.toLowerCase().includes(query) || 
           p.tagline.toLowerCase().includes(query) ||
           p.desc.toLowerCase().includes(query) ||
+          (p.flavorHeroBadge && p.flavorHeroBadge.toLowerCase().includes(query)) ||
           p.flavorTags.some(t => t.toLowerCase().includes(query));
 
         return matchesCategory && matchesSearch;
@@ -221,11 +256,11 @@ function initProductsPage() {
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #FFFFFF; border-radius: 12px; border: 1px dashed var(--border-subtle);">
-            <h3 style="font-size: 1.4rem; margin-bottom: 8px; color: var(--text-main);">No matching snacks found</h3>
+          <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: #FFFFFF; border-radius: 16px; border: 1.5px dashed var(--border-medium);">
+            <h3 style="font-size: 1.3rem; margin-bottom: 8px; color: var(--text-main);">No matching products found</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">Try searching for "Popcorn", "Peanut", "Aloo Bhujia", or "Papad".</p>
             <button class="btn btn-outline btn-sm" onclick="document.getElementById('productSearchInput').value=''; document.querySelector('.product-filter-btn[data-filter=all]').click();">
-              View All Products
+              View All 15 Products
             </button>
           </div>
         `;

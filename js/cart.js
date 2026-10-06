@@ -1,6 +1,6 @@
 /* ==========================================================================
-   NIMCO'S SNACK BOX CART MANAGER
-   State management, coupon vouchers, free gift milestones, and order confirmation
+   NIMCO'S SNACK BOX CART MANAGER (PROFESSIONAL FMCG EDITION)
+   State management, coupon vouchers, free gift milestone, and order confirmation
    ========================================================================== */
 
 class SnackBoxCart {
@@ -8,7 +8,7 @@ class SnackBoxCart {
     this.items = this.loadCart();
     this.discount = 0;
     this.promoApplied = null;
-    this.freeGiftThreshold = 199; // Orders above ₹199 unlock free Butter Popcorn
+    this.freeGiftThreshold = 199; // Orders above ₹199 unlock complimentary Butter Popcorn
     this.initElements();
     this.bindEvents();
     this.render();
@@ -191,7 +191,7 @@ class SnackBoxCart {
       this.giftProgressEl.style.width = `${percentage}%`;
 
       if (subtotal >= this.freeGiftThreshold) {
-        this.giftTextEl.innerHTML = `<strong>Perk Unlocked:</strong> Free Butter Popcorn pack included with your order!`;
+        this.giftTextEl.innerHTML = `<strong>Offer Unlocked:</strong> Free Butter Popcorn pack included with your order!`;
       } else {
         const remaining = this.freeGiftThreshold - subtotal;
         this.giftTextEl.innerHTML = `Add <strong>₹${remaining}</strong> more to qualify for a free Butter Popcorn pack.`;
@@ -240,12 +240,22 @@ class SnackBoxCart {
   animateAddEffect(button) {
     const originalText = button.innerHTML;
     button.classList.add('added-feedback');
-    button.textContent = 'Added';
+    button.innerHTML = 'Added';
+
+    // Animate cart trigger in navbar
+    const cartTriggers = document.querySelectorAll('.cart-btn-trigger');
+    cartTriggers.forEach(ct => {
+      ct.classList.remove('cart-badge-bounce');
+      void ct.offsetWidth; // Force reflow
+      ct.classList.add('cart-badge-bounce');
+    });
+
+    this.showToast('Item added to your Snack Box.');
 
     setTimeout(() => {
       button.classList.remove('added-feedback');
       button.innerHTML = originalText;
-    }, 800);
+    }, 900);
   }
 
   showToast(message) {

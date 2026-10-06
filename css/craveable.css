@@ -11,13 +11,9 @@
   overflow: hidden;
 }
 
-.craveable-decor {
-  display: none;
-}
-
 .craveable-toolbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
@@ -144,11 +140,7 @@
   justify-content: center;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(circle, rgba(254, 195, 63, 0.25) 0%, rgba(254, 195, 63, 0) 70%);
-}
-
-.burst-sparks-svg {
-  display: none;
+  background: radial-gradient(circle, rgba(254, 195, 63, 0.2) 0%, rgba(254, 195, 63, 0) 70%);
 }
 
 /* Individual Slides in Carousel */
@@ -207,7 +199,7 @@
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.8rem;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 999px;
   border: 2px solid #FFFFFF;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
@@ -327,24 +319,27 @@
   padding-top: 16px;
 }
 
-.info-taste-pills {
+.info-specs-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.taste-pill {
-  font-size: 0.78rem;
-  font-weight: 600;
+.info-spec-item {
+  font-size: 0.85rem;
+  color: var(--text-muted);
   background: var(--bg-warm);
-  color: var(--text-main);
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
-  border: 1px solid #EAE0D0;
+  border: 1px solid #EAE1D5;
 }
 
-.info-actions-group {
+.info-spec-item strong {
+  color: var(--text-main);
+  margin-left: 4px;
+}
+
+.info-action-btns {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -477,11 +472,11 @@
     gap: 12px;
   }
 
-  .info-taste-pills {
+  .info-specs-row {
     justify-content: center;
   }
 
-  .info-actions-group {
+  .info-action-btns {
     width: 100%;
     justify-content: center;
   }

@@ -1,6 +1,6 @@
 /* ==========================================================================
    BIKANO-STYLE "ALL THINGS CRAVEABLE" HORIZONTAL PRODUCT SLIDER
-   Interactive 3D center-focus carousel with categories, touch/mouse drag,
+   Interactive center-focus carousel with categories, touch/mouse drag,
    keyboard navigation, and instant cart integration
    ========================================================================== */
 
@@ -156,7 +156,7 @@ class CraveableSlider {
 
     // Render Stage HTML
     this.stage.innerHTML = `
-      <div class="craveable-burst-halo" aria-hidden="true" style="background: radial-gradient(circle, ${current.accentColor || '#FFE180'} 0%, rgba(254, 195, 63, 0.25) 45%, rgba(255,255,255,0) 70%);"></div>
+      <div class="craveable-burst-halo" aria-hidden="true"></div>
 
       <!-- Left Side Product -->
       <div class="craveable-slide slide-left" onclick="window.craveableSlider.prev()" title="View ${prevProduct.name}">
@@ -170,7 +170,9 @@ class CraveableSlider {
       <div class="craveable-slide slide-center" onclick="openProductModal('${current.id}')" title="View details and nutrition for ${current.name}">
         <div class="slide-pack-wrap">
           <img src="${current.image}" alt="${current.name}" class="craveable-packet-img" loading="lazy">
-          <span class="center-badge-pop">${current.badge || 'Bestseller'}</span>
+          <span class="center-badge-pop">
+            ${current.flavorHeroBadge || current.badge || 'Bestseller'}
+          </span>
         </div>
       </div>
 
@@ -189,8 +191,11 @@ class CraveableSlider {
         <div class="info-card-header">
           <div class="info-meta-row">
             <span class="veg-badge" title="100% Pure Vegetarian"></span>
-            <span class="info-price-pill">₹${current.price} Only <small>(${current.packWeight})</small></span>
+            <span class="info-price-pill">₹${current.price} <small>(${current.packWeight})</small></span>
             <span class="flavor-chip">${current.categoryLabel}</span>
+            <span class="flavor-badge-pill">
+              ${current.flavorHeroBadge || current.badge}
+            </span>
           </div>
           <h3 class="info-product-name">${current.name}</h3>
           <p class="info-product-tagline">"${current.tagline}"</p>
@@ -199,16 +204,17 @@ class CraveableSlider {
         <p class="info-product-desc">${current.desc}</p>
 
         <div class="info-card-footer">
-          <div class="info-crunch-meter">
-            <span style="font-weight: 700; color: #8C6400; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.04em;">Texture: ${current.crunchLevel}</span>
+          <div class="info-specs-row">
+            <span class="info-spec-item">Pack Weight: <strong>${current.packWeight}</strong></span>
+            <span class="info-spec-item">Texture: <strong>${current.crunchLevel}</strong></span>
           </div>
 
           <div class="info-action-btns">
             <button class="btn btn-primary btn-add-snack btn-sm" data-product-id="${current.id}">
-              <span>Add to Snack Box</span>
+              <span>Add to Box</span>
             </button>
-            <button class="btn btn-outline btn-info-details btn-sm" onclick="openProductModal('${current.id}')" title="Nutrition Facts & Ingredients">
-              <span>Nutrition &amp; Details</span>
+            <button class="btn btn-outline btn-info-details btn-sm" onclick="openProductModal('${current.id}')" title="Nutritional Values and Ingredients">
+              <span>View Details</span>
             </button>
           </div>
         </div>
