@@ -1,7 +1,7 @@
 /* ==========================================================================
    BIKANO-STYLE "ALL THINGS CRAVEABLE" HORIZONTAL PRODUCT SLIDER
    Interactive 3D center-focus carousel with categories, touch/mouse drag,
-   sound effects, keyboard navigation, and instant cart integration
+   keyboard navigation, and instant cart integration
    ========================================================================== */
 
 class CraveableSlider {
@@ -36,11 +36,13 @@ class CraveableSlider {
     this.currentCategory = category;
     if (category === 'all') {
       this.filteredProducts = [...this.allProducts];
+    } else if (category === 'bestsellers') {
+      this.filteredProducts = this.allProducts.filter(p => p.category === 'bestsellers' || p.badge === 'Bestseller');
     } else {
       this.filteredProducts = this.allProducts.filter(p => p.category === category);
     }
 
-    // Default to first item or center
+    // Default to first item in the filtered set
     this.currentIndex = 0;
     this.render();
   }
@@ -60,7 +62,6 @@ class CraveableSlider {
         this.categoryBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         const cat = btn.dataset.cat;
-        if (window.nimcoSounds) window.nimcoSounds.playPop();
         this.filterCategory(cat);
       });
     });
@@ -124,21 +125,18 @@ class CraveableSlider {
   prev() {
     if (this.filteredProducts.length === 0) return;
     this.currentIndex = (this.currentIndex - 1 + this.filteredProducts.length) % this.filteredProducts.length;
-    if (window.nimcoSounds) window.nimcoSounds.playPop();
     this.render();
   }
 
   next() {
     if (this.filteredProducts.length === 0) return;
     this.currentIndex = (this.currentIndex + 1) % this.filteredProducts.length;
-    if (window.nimcoSounds) window.nimcoSounds.playPop();
     this.render();
   }
 
   goToIndex(index) {
     if (index >= 0 && index < this.filteredProducts.length) {
       this.currentIndex = index;
-      if (window.nimcoSounds) window.nimcoSounds.playPop();
       this.render();
     }
   }
@@ -152,23 +150,16 @@ class CraveableSlider {
     // Indices for circular left, center, right
     const prevIdx = (this.currentIndex - 1 + total) % total;
     const nextIdx = (this.currentIndex + 1) % total;
-    const farLeftIdx = (this.currentIndex - 2 + total) % total;
-    const farRightIdx = (this.currentIndex + 2) % total;
 
     const prevProduct = this.filteredProducts[prevIdx];
     const nextProduct = this.filteredProducts[nextIdx];
 
     // Render Stage HTML
     this.stage.innerHTML = `
-      <div class="craveable-burst-halo" aria-hidden="true" style="background: radial-gradient(circle, ${current.accentColor || '#FFE180'} 0%, rgba(255, 183, 3, 0.4) 40%, rgba(255,255,255,0) 70%);">
-        <svg viewBox="0 0 200 200" class="burst-sparks-svg">
-          <circle cx="100" cy="100" r="90" fill="none" stroke="#FFA200" stroke-width="2" stroke-dasharray="8 8" opacity="0.4" />
-          <path d="M100 15 L100 0 M100 185 L100 200 M15 100 L0 100 M185 100 L200 100 M40 40 L28 28 M160 160 L172 172 M40 160 L28 172 M160 40 L172 28" stroke="#E5252A" stroke-width="3" stroke-linecap="round" />
-        </svg>
-      </div>
+      <div class="craveable-burst-halo" aria-hidden="true" style="background: radial-gradient(circle, ${current.accentColor || '#FFE180'} 0%, rgba(254, 195, 63, 0.25) 45%, rgba(255,255,255,0) 70%);"></div>
 
       <!-- Left Side Product -->
-      <div class="craveable-slide slide-left" onclick="window.craveableSlider.prev()" title="Click to view ${prevProduct.name}">
+      <div class="craveable-slide slide-left" onclick="window.craveableSlider.prev()" title="View ${prevProduct.name}">
         <div class="slide-pack-wrap">
           <img src="${prevProduct.image}" alt="${prevProduct.name}" class="craveable-packet-img" loading="lazy">
         </div>
@@ -176,15 +167,15 @@ class CraveableSlider {
       </div>
 
       <!-- Center Active Product -->
-      <div class="craveable-slide slide-center" onclick="openProductModal('${current.id}')" title="Click for nutrition & details">
+      <div class="craveable-slide slide-center" onclick="openProductModal('${current.id}')" title="View details and nutrition for ${current.name}">
         <div class="slide-pack-wrap">
           <img src="${current.image}" alt="${current.name}" class="craveable-packet-img" loading="lazy">
-          <span class="center-badge-pop">${current.badge || '🌟 Favorite'}</span>
+          <span class="center-badge-pop">${current.badge || 'Bestseller'}</span>
         </div>
       </div>
 
       <!-- Right Side Product -->
-      <div class="craveable-slide slide-right" onclick="window.craveableSlider.next()" title="Click to view ${nextProduct.name}">
+      <div class="craveable-slide slide-right" onclick="window.craveableSlider.next()" title="View ${nextProduct.name}">
         <div class="slide-pack-wrap">
           <img src="${nextProduct.image}" alt="${nextProduct.name}" class="craveable-packet-img" loading="lazy">
         </div>
@@ -193,7 +184,6 @@ class CraveableSlider {
     `;
 
     // Render Info Card for center item
-    const stars = '⭐'.repeat(current.crunchStars);
     this.infoCard.innerHTML = `
       <div class="info-card-inner">
         <div class="info-card-header">
@@ -210,16 +200,15 @@ class CraveableSlider {
 
         <div class="info-card-footer">
           <div class="info-crunch-meter">
-            <span class="crunch-stars">${stars}</span>
-            <span style="font-weight: 700; color: #8C6400; font-size: 0.88rem;">${current.crunchLevel}</span>
+            <span style="font-weight: 700; color: #8C6400; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.04em;">Texture: ${current.crunchLevel}</span>
           </div>
 
           <div class="info-action-btns">
             <button class="btn btn-primary btn-add-snack btn-sm" data-product-id="${current.id}">
-              <span>🛒 Add to Box</span>
+              <span>Add to Snack Box</span>
             </button>
-            <button class="btn btn-outline btn-info-details btn-sm" onclick="openProductModal('${current.id}')" title="Nutrition Facts & Trivia">
-              <span>🔍 Nutrition & Fun</span>
+            <button class="btn btn-outline btn-info-details btn-sm" onclick="openProductModal('${current.id}')" title="Nutrition Facts & Ingredients">
+              <span>Nutrition &amp; Details</span>
             </button>
           </div>
         </div>

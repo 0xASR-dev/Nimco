@@ -3,33 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snack Galaxy | All 15 Crunchy Nimco's Namkeen Flavours</title>
-  <meta name="description" content="Explore Nimco's complete range of 15 authentic namkeens. 100% Pure Veg, crunch scores, nutrition details, and pocket-friendly ₹5 packs!">
+  <title>Our Range | All 15 Authentic Nimco's Namkeen Flavours</title>
+  <meta name="description" content="Explore Nimco's complete range of 15 authentic Indian namkeens. 100% Pure Vegetarian, nutrition details, ingredients, and pocket-friendly ₹5 and ₹10 packs.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="assets/pop-corn.png" type="image/png">
 </head>
 <body>
-
-  <!-- Top Announcement Bar -->
-  <aside class="top-ticker" aria-label="Special Offers">
-    <div class="container top-ticker-content">
-      <div class="top-ticker-marquee">
-        <span class="ticker-item">
-          <span class="ticker-pill">🍿 Snack Box Perk</span>
-          <span>Get a <strong>FREE Butter Popcorn</strong> when your snack box reaches ₹199!</span>
-        </span>
-        <span class="ticker-item">
-          <span>🟢 <strong>100% Pure Vegetarian</strong></span>
-        </span>
-        <span class="ticker-item">
-          <span>⚡ Pocket-friendly ₹5 Packs!</span>
-        </span>
-      </div>
-      <button class="sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Sound Effects">
-        🔊 Sound: ON
-      </button>
-    </div>
-  </aside>
 
   <!-- Navigation Header -->
   <header class="site-header">
@@ -39,37 +18,20 @@
           <span class="brand-name">Nimco's</span>
           <span class="brand-sub">Namkeen & Sweets</span>
         </div>
-        <svg class="mascot-head-icon" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="44" fill="#FFC300" stroke="#242220" stroke-width="6"/>
-          <path d="M30 30 C20 10, 50 5, 50 18 C50 5, 80 10, 70 30 Z" fill="#FFFFFF" stroke="#242220" stroke-width="5"/>
-          <circle cx="38" cy="48" r="6" fill="#242220"/>
-          <circle cx="40" cy="46" r="2.5" fill="#FFFFFF"/>
-          <circle cx="62" cy="48" r="6" fill="#242220"/>
-          <circle cx="64" cy="46" r="2.5" fill="#FFFFFF"/>
-          <circle cx="28" cy="56" r="5" fill="#FF7B00" opacity="0.6"/>
-          <circle cx="72" cy="56" r="5" fill="#FF7B00" opacity="0.6"/>
-          <path d="M38 58 Q50 72 62 58" stroke="#242220" stroke-width="5" stroke-linecap="round" fill="none"/>
-        </svg>
       </a>
 
       <nav aria-label="Main Navigation">
         <ul class="nav-menu">
-          <li><a href="index.html" class="nav-link">Home 🏠</a></li>
-          <li><a href="products.html" class="nav-link active">Snack Galaxy 🚀</a></li>
-          <li>
-            <a href="funzone.html" class="nav-link">
-              Kid's Fun Zone 🎮 <span class="badge-fun">Play!</span>
-            </a>
-          </li>
-          <li><a href="parents.html" class="nav-link">Parents & Nutrition 🥗</a></li>
-          <li><a href="about.html" class="nav-link">Our Story ❤️</a></li>
-          <li><a href="contact.html" class="nav-link">Where to Buy 📍</a></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link active">Our Range</a></li>
+          <li><a href="about.html" class="nav-link">Our Story</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
       <div class="nav-actions">
-        <button class="cart-btn-trigger" aria-label="Open Snack Box Cart">
-          <span>🛒 Snack Box</span>
+        <button class="cart-btn-trigger" aria-label="Open Snack Box">
+          <span>Snack Box</span>
           <span class="cart-badge-count" style="display:none;">0</span>
         </button>
         <button class="mobile-menu-toggle" aria-label="Open Mobile Menu">
@@ -82,112 +44,43 @@
   </header>
 
   <!-- Products Hero Banner -->
-  <section style="background: radial-gradient(circle at 50% 30%, #FFE9BA 0%, #FFFDF7 70%); padding: 50px 0 40px; text-align: center; border-bottom: 3px solid #F5E5C9;">
+  <section class="products-page-header">
     <div class="container">
-      <span class="section-tag">🚀 15 Mouth-Watering Flavors</span>
-      <h1 style="font-size: 3.4rem; color: #242220; margin: 10px 0 14px;">The Complete Snack Galaxy!</h1>
-      <p style="font-size: 1.2rem; color: #666; max-width: 680px; margin: 0 auto 30px;">
-        Every single packet is made with 100% pure vegetarian ingredients, mouth-watering spices, and our signature crispiness. Pick your favorites and build your ultimate Snack Box!
+      <div class="section-tag">Authentic Indian Namkeen</div>
+      <h1 class="section-title">Our Complete Product Range</h1>
+      <p class="section-desc" style="max-width: 660px; margin: 0 auto;">
+        Explore all 15 authentic namkeen varieties, roasted groundnuts, crispy dals, and savoury mixtures. Prepared with 100% Pure Vegetarian ingredients.
       </p>
 
       <!-- Search & Filter Controls -->
-      <div style="max-width: 580px; margin: 0 auto 30px; position: relative;">
-        <input 
-          type="text" 
-          id="productSearchInput" 
-          placeholder="🔍 Search for Popcorn, Aloo Bhujia, Moong Dal, Peanuts..."
-          style="width: 100%; padding: 16px 24px; font-size: 1.05rem; font-family: inherit; border-radius: var(--border-radius-pill); border: 3px solid #EAD8BD; box-shadow: var(--shadow-sm); background: #FFF;"
-        >
-      </div>
-
-      <!-- Category Filter Pills -->
-      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-        <button class="product-filter-btn mood-pill-btn active" data-filter="all">
-          <span>🌟 All Snacks (15)</span>
-        </button>
-        <button class="product-filter-btn mood-pill-btn" data-filter="kids-fav">
-          <span>🍿 Kids' Superstars</span>
-        </button>
-        <button class="product-filter-btn mood-pill-btn" data-filter="peanuts">
-          <span>🥜 Peanut Power</span>
-        </button>
-        <button class="product-filter-btn mood-pill-btn" data-filter="dals">
-          <span>🌾 Crunchy Dals</span>
-        </button>
-        <button class="product-filter-btn mood-pill-btn" data-filter="mixes">
-          <span>🌶️ Chatpata & Mixes</span>
-        </button>
-        <button class="product-filter-btn mood-pill-btn" data-filter="papad">
-          <span>🫓 Papad & Treats</span>
-        </button>
-      </div>
-    </div>
-  <!-- All Things Craveable: 3D Horizontal Slider (Bikano-inspired) -->
-  <section class="craveable-section" id="craveableSection" style="padding: 60px 0 70px; border-top: none;">
-    <div class="container">
-      <div class="section-header" style="margin-bottom: 25px;">
-        <div class="section-tag">🍿 3D Interactive Showcase</div>
-        <h2 class="section-title">Spotlight Craveables</h2>
-        <p class="section-desc">Swipe or click to spin through each authentic flavor packet with full 3D zoom!</p>
-      </div>
-
-      <!-- Category Toolbar -->
-      <div class="craveable-toolbar">
-        <div class="craveable-categories">
-          <button class="craveable-cat-btn active" data-cat="all">🌟 All Munchies</button>
-          <button class="craveable-cat-btn" data-cat="kids-fav">🍿 Kids' Superstars</button>
-          <button class="craveable-cat-btn" data-cat="peanuts">🥜 Peanut Power</button>
-          <button class="craveable-cat-btn" data-cat="dals">🌾 Crunchy Dals</button>
-          <button class="craveable-cat-btn" data-cat="mixes">🌶️ Chatpata Mixes</button>
-          <button class="craveable-cat-btn" data-cat="papad">🫓 Papad & Treats</button>
-        </div>
-        <a href="#allProductsGrid" class="btn btn-primary btn-sm craveable-explore-btn">
-          View All 15 Grid ↓
-        </a>
-      </div>
-
-      <!-- 3D Center Stage Carousel -->
-      <div class="craveable-stage-wrap">
-        <button class="craveable-nav-btn craveable-nav-prev" id="craveablePrevBtn" aria-label="Previous Snack">
-          ❮
-        </button>
-
-        <div class="craveable-track-container" id="craveableTrackContainer">
-          <div class="craveable-stage" id="craveableStage">
-            <!-- Rendered dynamically by craveable-slider.js -->
-          </div>
+      <div class="filter-toolbar">
+        <div class="search-box-wrap">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="productSearchInput" 
+            class="search-input"
+            placeholder="Search by snack name, pulses, or spices..."
+            aria-label="Search snacks"
+          >
         </div>
 
-        <button class="craveable-nav-btn craveable-nav-next" id="craveableNextBtn" aria-label="Next Snack">
-          ❯
-        </button>
-      </div>
-
-      <!-- Active Product Details Card -->
-      <div class="craveable-info-card" id="craveableInfoCard">
-        <!-- Rendered dynamically for active center product -->
-      </div>
-
-      <!-- Horizontal Thumbnail Quick-Scroller Strip & Progress Bar -->
-      <div class="craveable-thumb-strip-wrap">
-        <div class="craveable-thumb-strip" id="craveableThumbStrip">
-          <!-- Rendered dynamically -->
-        </div>
-        <div class="craveable-progress-bar">
-          <div class="craveable-progress-fill" id="craveableProgressFill"></div>
+        <!-- Category Filter Tabs -->
+        <div class="category-filter-tabs">
+          <button class="filter-tab-btn product-filter-btn active" data-filter="all">All Products (15)</button>
+          <button class="filter-tab-btn product-filter-btn" data-filter="bestsellers">Bestsellers</button>
+          <button class="filter-tab-btn product-filter-btn" data-filter="peanuts">Peanuts & Nuts</button>
+          <button class="filter-tab-btn product-filter-btn" data-filter="dals">Crunchy Dals</button>
+          <button class="filter-tab-btn product-filter-btn" data-filter="mixes">Chatpata Mixes</button>
+          <button class="filter-tab-btn product-filter-btn" data-filter="papad">Jeera Papad</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Products Main Grid -->
-  <main style="padding: 60px 0 100px;">
+  <main style="padding: 40px 0 80px;">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 35px;">
-        <span class="section-tag">📦 Complete Pantry Collection</span>
-        <h2 style="font-size: 2.4rem; color: #242220; margin-top: 8px;">Explore All 15 Snacks</h2>
-        <p style="color: #666; font-size: 1.05rem;">Click any card to inspect nutrition facts, kid facts, and add straight to your Snack Box!</p>
-      </div>
       <div class="products-grid" id="allProductsGrid">
         <!-- Filled dynamically with all 15 authentic packets from NIMCO_PRODUCTS -->
       </div>
@@ -199,7 +92,7 @@
   <aside class="cart-drawer" id="cartDrawer" aria-label="Snack Box Shopping Cart">
     <div class="cart-drawer-header">
       <h3 class="cart-drawer-title">
-        <span>🛒 My Snack Box</span>
+        <span>My Snack Box</span>
       </h3>
       <button class="cart-close-btn" aria-label="Close Cart">✕</button>
     </div>
@@ -207,7 +100,7 @@
     <!-- Free Popcorn Progress Bar -->
     <div class="cart-free-gift-meter">
       <div class="gift-meter-label" id="giftMeterText">
-        Add <strong>₹199</strong> to unlock a <strong>FREE Butter Popcorn</strong>! 🎁
+        Add <strong>₹199</strong> to unlock a <strong>Complimentary Butter Popcorn</strong>.
       </div>
       <div class="meter-track">
         <div class="meter-fill" id="giftMeterFill" style="width: 0%;"></div>
@@ -222,7 +115,7 @@
     <!-- Drawer Footer -->
     <div class="cart-drawer-footer">
       <div class="promo-input-row">
-        <input type="text" id="cartPromoInput" class="promo-input-field" placeholder="Promo code (e.g. CHINTU10)">
+        <input type="text" id="cartPromoInput" class="promo-input-field" placeholder="Coupon code (e.g. NIMCO10)">
         <button class="promo-apply-btn" id="cartPromoBtn">Apply</button>
       </div>
       <div id="cartPromoMsg" style="font-size: 0.85rem; font-weight: 700; margin-bottom: 12px; display: none;"></div>
@@ -232,13 +125,13 @@
         <span class="cart-subtotal-amount" id="cartSubtotal">₹0</span>
       </div>
 
-      <div class="cart-subtotal-row" id="cartDiscountRow" style="display: none; font-size: 1rem; color: #25AC4B;">
-        <span>Promo Discount:</span>
+      <div class="cart-subtotal-row" id="cartDiscountRow" style="display: none; font-size: 1rem; color: var(--brand-green);">
+        <span>Discount:</span>
         <span id="cartDiscountAmount">-₹0</span>
       </div>
 
       <button class="btn btn-primary" id="cartCheckoutBtn" style="width: 100%;">
-        Munch & Checkout 🚀
+        Confirm Snack Box Order
       </button>
     </div>
   </aside>
@@ -253,79 +146,54 @@
     </div>
   </div>
 
-  <!-- Floating Mascot Interaction Widget -->
-  <div class="floating-mascot-widget" id="floatingMascotWidget">
-    <div class="mascot-bubble" id="mascotSpeechBubble">
-      Can't decide? Try the Aloo Bhujia! It's so crunchy! 🥔
-    </div>
-    <button class="mascot-avatar-btn" id="mascotAvatarBtn" aria-label="Ask Mascot Chintu">
-      <svg viewBox="0 0 100 100" fill="none">
-        <circle cx="50" cy="50" r="44" fill="#FFC300" stroke="#242220" stroke-width="6"/>
-        <path d="M30 30 C20 10, 50 5, 50 18 C50 5, 80 10, 70 30 Z" fill="#FFFFFF" stroke="#242220" stroke-width="5"/>
-        <circle cx="38" cy="48" r="6" fill="#242220"/>
-        <circle cx="40" cy="46" r="2.5" fill="#FFFFFF"/>
-        <circle cx="62" cy="48" r="6" fill="#242220"/>
-        <circle cx="64" cy="46" r="2.5" fill="#FFFFFF"/>
-        <circle cx="28" cy="56" r="5" fill="#FF7B00" opacity="0.6"/>
-        <circle cx="72" cy="56" r="5" fill="#FF7B00" opacity="0.6"/>
-        <path d="M38 58 Q50 72 62 58" stroke="#242220" stroke-width="5" stroke-linecap="round" fill="none"/>
-      </svg>
-    </button>
-  </div>
-
   <!-- Footer -->
   <footer class="site-footer">
-    <div class="footer-curved-top">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0 C300,90 900,90 1200,0 L1200,120 L0,120 Z" fill="#242220"></path>
-      </svg>
-    </div>
-
     <div class="container">
       <div class="footer-grid">
+        <!-- Brand Info -->
         <div class="footer-brand">
           <div class="brand-logo-badge" style="width: fit-content; margin-bottom: 16px;">
             <span class="brand-name">Nimco's</span>
             <span class="brand-sub">Namkeen & Sweets</span>
           </div>
           <p>
-            Crafting India's crunchiest and most wholesome snacks. Bringing authentic tastes, joyous smiles, and pure veggie quality to school lunchboxes and family tea tables.
+            Crafting India's crunchiest and most wholesome snacks since 1998. Bringing authentic tastes, joyous smiles, and pure vegetarian quality to households nationwide.
           </p>
           <div class="footer-tagline-quote">
-            "Khate Khate Mann Na Bhare!" ❤️
+            "Khate Khate Mann Na Bhare!"
           </div>
         </div>
 
+        <!-- Navigation Links -->
         <div class="footer-col">
           <h4>Explore</h4>
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">All 15 Snacks</a></li>
-            <li><a href="funzone.html">Kid's Fun Zone</a></li>
-            <li><a href="parents.html">Parents & Nutrition</a></li>
+            <li><a href="products.html">Our Range</a></li>
             <li><a href="about.html">Our Story</a></li>
-            <li><a href="contact.html">Store Locator</a></li>
+            <li><a href="contact.html">Contact & Distribution</a></li>
           </ul>
         </div>
 
+        <!-- Product Categories -->
         <div class="footer-col">
-          <h4>Top Favorites</h4>
+          <h4>Our Categories</h4>
           <ul class="footer-links">
-            <li><a href="products.html?filter=kids-fav">Butter Popcorn 🍿</a></li>
-            <li><a href="products.html?filter=kids-fav">Royal Aloo Bhujia 🥔</a></li>
-            <li><a href="products.html?filter=kids-fav">Khatta Meetha 🍬</a></li>
-            <li><a href="products.html?filter=peanuts">Tasty Besan Peanuts 🥜</a></li>
-            <li><a href="products.html?filter=dals">Crispy Moong Dal 🌾</a></li>
-            <li><a href="products.html?filter=papad">Jeera Papad 🫓</a></li>
+            <li><a href="products.html?filter=bestsellers">Bestsellers</a></li>
+            <li><a href="products.html?filter=peanuts">Peanuts & Groundnuts</a></li>
+            <li><a href="products.html?filter=dals">Crunchy Dals & Pulses</a></li>
+            <li><a href="products.html?filter=mixes">Chatpata Mixtures</a></li>
+            <li><a href="products.html?filter=papad">Traditional Jeera Papad</a></li>
           </ul>
         </div>
 
+        <!-- Newsletter & Updates -->
         <div class="footer-col">
-          <h4>Nimco Crunch Club</h4>
+          <h4>Stay Connected</h4>
           <div class="footer-club-box">
-            <p>Join the young munchers club for free printable coloring sheets and exclusive holiday offers!</p>
-            <form onsubmit="event.preventDefault(); alert('Welcome to the Nimco Crunch Club! 🍿🎉'); this.reset();" class="footer-input-wrap">
-              <input type="email" required placeholder="Parent's Email ID" class="footer-input">
+            <p>Subscribe for seasonal snack offers, festival hampers, and dealership updates.</p>
+            <form onsubmit="event.preventDefault(); alert('Thank you for subscribing to Nimco updates.'); this.reset();" class="footer-input-wrap">
+              <input type="email" required placeholder="Enter Email Address" class="footer-input">
               <button type="submit" class="btn btn-secondary btn-sm" style="padding: 8px 14px;">Join</button>
             </form>
           </div>
@@ -346,10 +214,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/sound.js"></script>
   <script src="js/products-data.js"></script>
   <script src="js/cart.js"></script>
-  <script src="js/craveable-slider.js"></script>
   <script src="js/main.js"></script>
 
   <script>
