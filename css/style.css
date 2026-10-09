@@ -378,9 +378,66 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding: 70px 0 90px;
+  padding: 75px 0 100px;
   overflow: hidden;
-  background: radial-gradient(circle at 65% 40%, #FFF5DD 0%, #FAF7F2 75%);
+  background: #0E0A06;
+  color: #FFFFFF;
+}
+
+/* Ambient Video Backdrop & Overlay */
+.hero-video-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  object-position: center 60%;
+  opacity: 0.72;
+  filter: brightness(0.88) contrast(1.08) saturate(1.15);
+  will-change: transform;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 10, 6, 0.94) 0%,
+    rgba(14, 10, 6, 0.82) 42%,
+    rgba(14, 10, 6, 0.40) 78%,
+    rgba(14, 10, 6, 0.65) 100%
+  );
+  z-index: 2;
+}
+
+/* Bottom blend to transition into the warm cream of the Craveable Section */
+.hero-video-overlay::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(14, 10, 6, 0) 0%, rgba(250, 247, 242, 0.85) 70%, #FAF7F2 100%);
+  pointer-events: none;
 }
 
 .hero-curved-bottom {
@@ -392,6 +449,8 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
   gap: 50px;
+  position: relative;
+  z-index: 5;
 }
 
 .hero-content {
@@ -403,7 +462,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--brand-red);
+  color: var(--brand-yellow);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -415,17 +474,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 3.4rem;
   line-height: 1.15;
   margin-bottom: 18px;
-  color: var(--text-main);
+  color: #FFFFFF;
   letter-spacing: -0.5px;
 }
 
 .hero-title .highlight-red {
-  color: var(--brand-red);
+  color: var(--brand-yellow);
 }
 
 .hero-subtitle {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.86);
   margin-bottom: 32px;
   max-width: 540px;
   font-weight: 400;
@@ -440,33 +499,74 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 38px;
 }
 
+.hero-cta-group .btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-cta-group .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
 .hero-trust-badges {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 16px 20px;
   padding-top: 24px;
-  border-top: 1px solid #EAE3D6;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
+  gap: 8px;
+  font-size: 0.84rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.trust-item .weight-chip {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #FFFFFF !important;
 }
 
 .trust-item-icon {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #FFFFFF;
-  border: 1px solid #E4DBD0;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video {
+    display: none;
+  }
+  .hero-section {
+    background: radial-gradient(circle at 65% 40%, #1A130C 0%, #0E0A06 75%);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-video-overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(14, 10, 6, 0.88) 0%,
+      rgba(14, 10, 6, 0.94) 50%,
+      rgba(14, 10, 6, 0.82) 100%
+    );
+  }
 }
 
 /* Hero Pack Visuals */
@@ -519,8 +619,6 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   top: 30px;
   transform: rotate(8deg);
-  border-radius: 16px;
-  border: 2px solid #FFFFFF;
 }
 
 .hero-pack-side:hover {
@@ -831,14 +929,6 @@ h1, h2, h3, h4, h5, h6 {
   filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.12));
 }
 
-.product-img-wrap img[src$=".jpeg"],
-.product-img-wrap img[src$=".jpg"] {
-  border: 1px solid #ECE4D8;
-  border-radius: 12px;
-  background: #FFF;
-  padding: 4px;
-}
-
 .snack-card:hover .product-img-wrap img {
   transform: scale(1.06) translateY(-3px);
 }
@@ -968,12 +1058,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   WHY NIMCO'S (BENTO GRID - REFINED)
+   WHY NIMCO'S (BENTO GRID - HIGH-END FMCG EDITORIAL)
    ========================================================================== */
 .benefits-section {
-  padding: 85px 0;
-  background: #FFFFFF;
+  padding: 95px 0 90px;
+  background: #FCFAF6;
   border-top: 1px solid #ECE4D8;
+  border-bottom: 1px solid #ECE4D8;
+  position: relative;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #FFF4E5;
+  border: 1px solid #F5D7B5;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #A04A00;
+  margin-bottom: 14px;
+}
+
+.kicker-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--brand-red);
+  border-radius: 50%;
 }
 
 .bento-grid {
@@ -983,53 +1098,271 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bento-card {
-  background: var(--bg-cream);
-  border-radius: 18px;
-  border: 1px solid #EBE4D8;
-  padding: 32px 26px;
-  transition: all 0.25s ease;
+  background: #FFFFFF;
+  border-radius: 20px;
+  border: 1px solid #EAE1D3;
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.25s ease;
+  box-shadow: 0 4px 16px -2px rgba(24, 22, 21, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  position: relative;
 }
 
 .bento-card:hover {
-  transform: translateY(-4px);
-  border-color: #DCCFBF;
-  box-shadow: var(--shadow-sm);
+  transform: translateY(-5px);
+  border-color: #D6C4AC;
+  box-shadow: 0 16px 36px -4px rgba(24, 22, 21, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
 .bento-card.card-wide {
   grid-column: span 2;
   display: flex;
-  align-items: center;
-  gap: 26px;
+  flex-direction: column;
 }
 
-.bento-icon-bubble {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
-  background: #FFFFFF;
-  border: 1px solid #E4DBD0;
+.bento-card-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 18px;
-  flex-shrink: 0;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-.bento-card.card-wide .bento-icon-bubble {
-  margin-bottom: 0;
+.bento-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bento-card:hover .bento-icon-box {
+  transform: scale(1.08);
+}
+
+.bento-icon-veg {
+  background: #EBF7EE;
+  color: #1E8E3E;
+  border: 1px solid #CEEBD3;
+}
+
+.bento-icon-price {
+  background: #FFF8E6;
+  color: #A05E03;
+  border: 1px solid #FDE4B4;
+}
+
+.bento-icon-tech {
+  background: #FDF1F1;
+  color: #B81D24;
+  border: 1px solid #FAD1D3;
+}
+
+.bento-icon-protein {
+  background: #F0F9F3;
+  color: #247545;
+  border: 1px solid #D3EDDC;
+}
+
+.bento-icon-heritage {
+  background: #FFF5EA;
+  color: #B56006;
+  border: 1px solid #FCE1C2;
+}
+
+.bento-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tag-green {
+  background: #EBF7EE;
+  color: #1E8E3E;
+  border: 1px solid #CBEBD1;
+}
+
+.tag-amber {
+  background: #FFF8E6;
+  color: #9E5C00;
+  border: 1px solid #FDE4B4;
+}
+
+.tag-crimson {
+  background: #FDF1F1;
+  color: #B81D24;
+  border: 1px solid #FAD1D3;
+}
+
+.tag-gold {
+  background: #FFF5EA;
+  color: #A65700;
+  border: 1px solid #FCE0BE;
+}
+
+.bento-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .bento-title {
-  font-size: 1.35rem;
-  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.35;
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+
+.bento-card.card-wide .bento-title {
+  font-size: 1.42rem;
+}
+
+.bento-title-accent {
+  color: #8F1218;
 }
 
 .bento-text {
-  color: var(--text-muted);
-  font-size: 0.94rem;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  color: #55504A;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  margin-bottom: 20px;
+}
+
+/* Feature Chips */
+.bento-feature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.bento-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #48433C;
+  background: #FBF8F3;
+  border: 1px solid #E8DFD1;
+  border-radius: 8px;
+  padding: 5px 11px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bento-chip svg {
+  color: #B81D24;
+}
+
+.bento-card:hover .bento-chip {
+  background: #FFFFFF;
+  border-color: #D8CCBD;
+}
+
+/* Stat Strip for Price Card */
+.bento-stat-strip {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.bento-stat-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 12px;
+  background: #FBF8F3;
+  border: 1px solid #E8DFD1;
+  border-radius: 10px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bento-card:hover .bento-stat-pill {
+  background: #FFFFFF;
+  border-color: #D8CCBD;
+}
+
+.bento-stat-price {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: #B81D24;
+  line-height: 1.1;
+}
+
+.bento-stat-desc {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #726C65;
+  margin-top: 2px;
+}
+
+/* Pulse Badges for Nutrition Card */
+.bento-pulse-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.pulse-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #1F6B38;
+  background: #EFF8F2;
+  border: 1px solid #D2EBD9;
+  border-radius: 8px;
+  padding: 5px 11px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bento-card:hover .pulse-pill {
+  background: #FFFFFF;
+  border-color: #BEDCC6;
+}
+
+/* Quote Bar for Motto Card */
+.bento-quote-bar {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #FFF9F3;
+  border-left: 3px solid #B81D24;
+  border-top: 1px solid #F5E8DC;
+  border-right: 1px solid #F5E8DC;
+  border-bottom: 1px solid #F5E8DC;
+  border-radius: 0 10px 10px 0;
+  margin-top: auto;
+}
+
+.quote-symbol {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #B81D24;
+  flex-shrink: 0;
+}
+
+.quote-caption {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #615951;
+  line-height: 1.45;
 }
 
 /* ==========================================================================
@@ -1677,12 +2010,11 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(2, 1fr);
   }
   .bento-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
   .bento-card.card-wide {
-    grid-column: span 1;
-    flex-direction: column;
-    text-align: center;
+    grid-column: span 2;
   }
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1690,6 +2022,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .bento-card.card-wide {
+    grid-column: span 1;
+  }
+  .bento-card {
+    padding: 24px 20px;
+  }
   .hero-title {
     font-size: 2.4rem;
   }

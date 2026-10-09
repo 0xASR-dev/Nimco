@@ -42,7 +42,7 @@ Every product image from the `assets/` folder is featured:
 
 1. **Butter Salted Pop Corn** (`assets/pop-corn.png`)
 2. **Royal Aloo Bhujia** (`assets/aloo-bhujia.png`)
-3. **Khatta Meetha Mixture** (`assets/khatta_meetha.jpeg`)
+3. **Khatta Meetha Mixture** (`assets/khatta_meetha.png`)
 4. **Tasty Besan Coated Peanuts** (`assets/Tasty.png`)
 5. **Masala Peanuts** (`assets/masala_peanuts.png`)
 6. **Salted Peanuts** (`assets/salted_peanuts.png`)
@@ -50,10 +50,10 @@ Every product image from the `assets/` folder is featured:
 8. **Spicy Chana Dal** (`assets/chana_dal.png`)
 9. **Hing Roasted Chana** (`assets/hing_chana.png`)
 10. **Chatpata Green Peas** (`assets/Matar.png`)
-11. **Tikha Mitha Mixture** (`assets/tikha_mitha_mix.jpeg`)
-12. **Golden Corn Flake Mix** (`assets/corn_mix.jpeg`)
-13. **Dal Chawal Crispy Crunch** (`assets/dal_chawal.jpeg`)
-14. **Salted Pope Crispies** (`assets/salted_pope.jpeg`)
+11. **Tikha Mitha Mixture** (`assets/tikha_mitha_mix.png`)
+12. **Golden Corn Flake Mix** (`assets/corn_mix.png`)
+13. **Dal Chawal Crispy Crunch** (`assets/dal_chawal.png`)
+14. **Salted Pope Crispies** (`assets/salted_pope.png`)
 15. **Traditional Jeera Papad** (`assets/jeera-papad.png`)
 
 ---

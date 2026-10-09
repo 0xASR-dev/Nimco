@@ -8,9 +8,62 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
+  initHeroBackgroundVideo();
   initProductDetailModal();
   initProductsPage();
 });
+
+/* --------------------------------------------------------------------------
+   AMBIENT HERO BACKGROUND VIDEO (WEB-OPTIMIZED, ZERO-AUDIO, AUTO-PLAY, POWER-AWARE)
+   -------------------------------------------------------------------------- */
+function initHeroBackgroundVideo() {
+  const video = document.getElementById('heroBgVideo');
+  const heroSection = document.getElementById('heroSection');
+  if (!video) return;
+
+  // Strictly enforce zero audio across all browsers
+  video.muted = true;
+  video.volume = 0;
+
+  // Respect user prefers-reduced-motion accessibility preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    video.pause();
+    return;
+  }
+
+  // Attempt seamless autoplay
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // Fallback: retry on first interaction if power-saver active
+      const playOnInteract = () => {
+        video.play().catch(() => {});
+      };
+      document.addEventListener('click', playOnInteract, { once: true });
+      document.addEventListener('touchstart', playOnInteract, { once: true });
+    });
+  }
+
+  // Performance Optimization: Pause video when scrolled out of view to save CPU/GPU
+  if ('IntersectionObserver' in window && heroSection) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (video.paused && !prefersReducedMotion) {
+            video.play().catch(() => {});
+          }
+        } else {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.08 });
+
+    observer.observe(heroSection);
+  }
+}
 
 /* --------------------------------------------------------------------------
    HEADER & MOBILE MENU
