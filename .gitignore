@@ -1,4 +1,5 @@
 .DS_Store
 Thumbs.db
+unnecessary_files/
 .playwright-mcp/
 screenshot_*.png
